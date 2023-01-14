@@ -1,8 +1,10 @@
-#include "common_consts.h"
-#include "scenes.h"
-
 #include <iostream>
 #include <time.h>
+
+#include "common_consts.h"
+#include "scenes.h"
+#include "vec3.h"
+
 
 int main() {
 	time_t begin, end;
@@ -24,6 +26,7 @@ int main() {
 	color background (0, 0, 0);
 
 	switch (0) {
+	//default:
 	case 1:
 		world = random_scene();
 		background = color(0.70, 0.80, 1.0);
@@ -41,7 +44,7 @@ int main() {
 		vfov = 20.0;
 		break;
 
-	//default:
+	default:
 	case 3:
 		world = two_perlin_spheres();
 		background = color(0.70, 0.80, 1.0);
@@ -93,7 +96,7 @@ int main() {
 		vfov = 40.0;
 		break;
 
-	default:
+	//default:
 	case 8:
 		world = feature_ensemble();
 		aspect_ratio = 1.0;

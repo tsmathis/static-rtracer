@@ -1,16 +1,9 @@
-#ifndef COMMON_CONSTS_H
-#define COMMON_CONSTS_H
+#pragma once
 
-#include <cmath>
 #include <limits>
-#include <memory>
 #include <random>
 #include <cstdlib>
 
-// Namespaces
-using std::shared_ptr;
-using std::make_shared;
-using std::sqrt;
 
 // Constants
 const double infinity = std::numeric_limits <double>::infinity();
@@ -40,9 +33,3 @@ inline double clamp(double x, double min, double max) {
 	if (x > max) return max;
 	return x;
 }
-
-// Common Headers
-#include "ray.h"
-#include "vec3.h"
-
-#endif

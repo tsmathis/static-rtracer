@@ -1,14 +1,17 @@
-#ifndef SPHERE_H
-#define SPHERE_H
+#pragma once
 
-#include "common_consts.h"
+#include <cmath>
+#include <memory>
+
 #include "hittable.h"
+#include "vec3.h"
 
+class material;
 
 class sphere : public hittable {
 public:
 	sphere() {}
-	sphere(point3 cen, double r, shared_ptr<material> m)
+	sphere(point3 cen, double r, std::shared_ptr<material> m)
 		: center(cen), radius(r), mat_ptr(m) {};
 
 	virtual bool hit(
@@ -19,7 +22,7 @@ public:
 public:
 	point3 center;
 	double radius;
-	shared_ptr<material> mat_ptr;
+	std::shared_ptr<material> mat_ptr;
 
 private:
 	static void get_sphere_uv(const point3& p, double& u, double& v) {
@@ -66,5 +69,3 @@ bool sphere::bounding_box(double time0, double time1, aabb& output_box) const {
 		center + vec3(radius, radius, radius));
 	return true;
 }
-
-#endif

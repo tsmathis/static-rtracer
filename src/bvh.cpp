@@ -1,12 +1,14 @@
 #include "bvh.h"
 
+#include <memory>
+
 #include "common_consts.h"
 #include "hittable.h"
 #include "hittable_list.h"
 #include <algorithm>
 
 
-inline bool box_compare(const shared_ptr<hittable> a, const shared_ptr<hittable> b, int axis) {
+inline bool box_compare(const std::shared_ptr<hittable> a, const std::shared_ptr<hittable> b, int axis) {
 	aabb box_a;
 	aabb box_b;
 
@@ -16,21 +18,21 @@ inline bool box_compare(const shared_ptr<hittable> a, const shared_ptr<hittable>
 	return box_a.min().e[axis] < box_b.min().e[axis];
 }
 
-bool box_x_compare(const shared_ptr<hittable> a, const shared_ptr<hittable> b) {
+bool box_x_compare(const std::shared_ptr<hittable> a, const std::shared_ptr<hittable> b) {
 	return box_compare(a, b, 0);
 }
 
-bool box_y_compare(const shared_ptr<hittable> a, const shared_ptr<hittable> b) {
+bool box_y_compare(const std::shared_ptr<hittable> a, const std::shared_ptr<hittable> b) {
 	return box_compare(a, b, 1);
 }
 
-bool box_z_compare(const shared_ptr<hittable> a, const shared_ptr<hittable> b) {
+bool box_z_compare(const std::shared_ptr<hittable> a, const std::shared_ptr<hittable> b) {
 	return box_compare(a, b, 2);
 }
 
 
 bvh_node::bvh_node(
-	const std::vector<shared_ptr<hittable>>& src_objects,
+	const std::vector<std::shared_ptr<hittable>>& src_objects,
 	size_t start, size_t end, double time0, double time1
 ) {
 	auto objects = src_objects; // Create modifiable array of the source scene objects
@@ -59,8 +61,8 @@ bvh_node::bvh_node(
 		std::sort(objects.begin() + start, objects.begin() + end, comparator);
 
 		auto mid = start + object_span / 2;
-		left = make_shared<bvh_node>(objects, start, mid, time0, time1);
-		right = make_shared<bvh_node>(objects, mid, end, time0, time1);
+		left = std::make_shared<bvh_node>(objects, start, mid, time0, time1);
+		right = std::make_shared<bvh_node>(objects, mid, end, time0, time1);
 	}
 
 	aabb box_left, box_right;

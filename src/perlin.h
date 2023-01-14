@@ -1,5 +1,4 @@
-#ifndef PERLIN_H
-#define PERLIN_H
+#pragma once
 
 #include "common_consts.h"
 
@@ -113,5 +112,3 @@ private:
 	}
 
 };
-
-#endif

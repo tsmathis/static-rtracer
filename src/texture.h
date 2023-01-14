@@ -1,7 +1,8 @@
-#ifndef TEXTURE_H
-#define TEXTURE_H
+#pragma once
 
-#include "common_consts.h"
+#include <cmath>
+#include <memory>
+
 #include "rtw_stb_image.h"
 #include "perlin.h"
 
@@ -35,11 +36,11 @@ public:
 
 	checker_texture() {} 
 	
-	checker_texture(shared_ptr<texture> _even, shared_ptr<texture> _odd)
+	checker_texture(std::shared_ptr<texture> _even, std::shared_ptr<texture> _odd)
 		: even(_even), odd(_odd) {}
 
 	checker_texture(color c1, color c2)
-		: even(make_shared<solid_color>(c1)), odd(make_shared<solid_color>(c2)) {}
+		: even(std::make_shared<solid_color>(c1)), odd(std::make_shared<solid_color>(c2)) {}
 
 	virtual color value(double u, double v, const point3& p) const override {
 		auto sines = sin(10 * p.x()) * sin(10 * p.y()) * sin(10 * p.z());
@@ -50,8 +51,8 @@ public:
 	}
 
 public:
-	shared_ptr<texture> odd;
-	shared_ptr<texture> even;
+	std::shared_ptr<texture> odd;
+	std::shared_ptr<texture> even;
 
 };
 
@@ -124,5 +125,3 @@ private:
     int width, height;
     int bytes_per_scanline;
 };
-
-#endif

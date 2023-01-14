@@ -1,7 +1,7 @@
-#ifndef RAY_H
-#define RAY_H
+#pragma once
 
 #include "vec3.h"
+
 
 class ray {
 public:
@@ -10,18 +10,14 @@ public:
 		: orig(origin), dir(direction), tm(time)
 	{}
 
-	point3 origin() const  { return orig; }
-	vec3 direction() const { return dir; }
-	double time() const    { return tm; }
+	point3 origin() const;
+	vec3 direction() const;
+	double time() const;
 
-	point3 at(double t) const {
-		return orig + t * dir;
-	}
+	point3 at(double t) const;
 
 public:
 	point3 orig;
 	vec3 dir;
 	double tm;
 };
-
-#endif

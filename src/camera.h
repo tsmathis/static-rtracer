@@ -1,5 +1,4 @@
-#ifndef CAMERA_H
-#define CAMERA_H
+#pragma once
 
 #include "common_consts.h"
 #include "vec3.h"
@@ -58,5 +57,3 @@ ray camera::get_ray(double s, double t) const {
 		random_double(time0, time1)
 	);
 }
-
-#endif

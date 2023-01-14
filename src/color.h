@@ -1,5 +1,4 @@
-#ifndef COLOR_H
-#define COLOR_H
+#pragma once
 
 #include "vec3.h"
 
@@ -22,4 +21,3 @@ void write_color(std::ostream& out, color pixel_color, int samples_per_pixel) {
 		<< static_cast<int>(256 * clamp(b, 0.0, 0.999)) << '\n';
 }
 
-#endif
