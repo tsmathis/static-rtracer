@@ -3,6 +3,7 @@
 #include <memory>
 
 #include "hittable.h"
+#include "ray.h"
 #include "texture.h"
 #include "vec3.h"
 

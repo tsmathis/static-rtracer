@@ -1,7 +1,11 @@
 #pragma once
 
+#include <cmath>
+
 #include "common_consts.h"
+#include "ray.h"
 #include "vec3.h"
+
 
 class camera {
 public:
@@ -46,14 +50,3 @@ private:
 	double lens_radius;
 	double time0, time1;  // shutter open/close times
 };
-
-ray camera::get_ray(double s, double t) const {
-	vec3 rd = lens_radius * random_in_unit_disk();
-	vec3 offset = u * rd.x() + v * rd.y();
-
-	return ray(
-		origin + offset,
-		lower_left_corner + s * horizontal + t * vertical - origin - offset,
-		random_double(time0, time1)
-	);
-}

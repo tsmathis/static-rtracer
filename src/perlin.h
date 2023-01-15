@@ -1,6 +1,9 @@
 #pragma once
 
+#include <cmath>
+
 #include "common_consts.h"
+#include "vec3.h"
 
 
 class perlin {

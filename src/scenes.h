@@ -14,6 +14,7 @@
 #include "sphere.h"
 #include "texture.h"
 
+
 color ray_color(const ray& r, const color& background, const hittable& world, int depth) {
 	hit_record rec;
 

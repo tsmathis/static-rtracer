@@ -1,8 +1,10 @@
 #pragma once
 
+#include <cmath>
+#include <iostream>
+
 #include "vec3.h"
 
-#include <iostream>
 
 void write_color(std::ostream& out, color pixel_color, int samples_per_pixel) {
 	auto r = pixel_color.x();
